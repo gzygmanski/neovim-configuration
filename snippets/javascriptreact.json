@@ -1,0 +1,62 @@
+{
+  "useState Hook": {
+    "prefix": "us.s",
+    "body": [
+      "const [${1:}, set${1:}] = useState(${2:});"
+    ],
+		"description": "Create a useEffect hook."
+  },
+  "useEffect Hook": {
+    "prefix": "us.e",
+    "body": [
+      "useEffect(() => {",
+      " ${1:}",
+      "}, [${2:}]);"
+    ],
+		"description": "Create a useEffect hook."
+  },
+  "useReducer Hook": {
+    "prefix": "us.rd",
+    "body": [
+      "const [${1:}, ${2:dispatch}] = useReducer(${3:reducer}, ${4:null})"
+    ],
+		"description": "Create a useReducer hook."
+  },
+  "useContext Hook": {
+    "prefix": "us.c",
+    "body": [
+      "const ${1:} = useContext(${2:})"
+    ],
+		"description": "Create a useContext hook."
+  },
+  "useMemo Hook": {
+    "prefix": "us.m",
+    "body": [
+      "const ${1:} = useMemo(() => {",
+      " ${2:}",
+      "}, [${3:}]);"
+    ],
+		"description": "Create a useMemo hook."
+  },
+  "useCallback Hook": {
+    "prefix": "us.cb",
+    "body": [
+      "const ${1:} = useCallback(() => {",
+      " ${2:}",
+      "}, [${3:}]);"
+    ],
+		"description": "Create a useCallback hook."
+  },
+  "useRef Hook": {
+    "prefix": "us.r",
+    "body": [
+      "const ${1:} = useRef(${2:})"
+    ],
+		"description": "Create a useRef hook."
+  },
+  "className": {
+    "prefix": "cn",
+    "body": "className={${1:}}",
+    "description": "JSX class"
+  }
+}
