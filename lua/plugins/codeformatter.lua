@@ -27,16 +27,12 @@ local prettier = {
 }
 
 require('format').setup {
-    ['*'] = remove_whitespace,
-    javascript = prettier,
-    javascriptreact = prettier,
-    typescript = prettier,
-    typescriptreact = prettier,
-    html = prettier,
-    css = prettier,
-    json = prettier,
+  ['*'] = remove_whitespace,
+  javascript = prettier,
+  javascriptreact = prettier,
+  typescript = prettier,
+  typescriptreact = prettier,
+  html = prettier,
+  css = prettier,
+  json = prettier,
 }
-
-
-
-

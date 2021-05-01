@@ -1,5 +1,5 @@
 vim.g.nvim_tree_side = 'left'
-vim.g.nvim_tree_width = 35
+vim.g.nvim_tree_width = 37
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
 vim.g.nvim_tree_auto_open = 0
 vim.g.nvim_tree_auto_close = 1
@@ -12,6 +12,7 @@ vim.g.nvim_tree_tab_open = 0
 vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 0}
 vim.g.nvim_tree_width_allow_resize = 1
 vim.g.nvim_tree_highlight_opened_files = 0
+vim.g.nvim_tree_special_files = {}
 -- vim.g.nvim_tree_disable_netrw = 0 -- 1 by default, disables netrw
 -- vim.g.nvim_tree_hijack_netrw = 0 -- 1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
 

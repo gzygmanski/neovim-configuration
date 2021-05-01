@@ -20,6 +20,7 @@ telescope.setup {
       '--column',
       '--smart-case'
     },
+    prompt_title = false,
     prompt_position = 'bottom',
     prompt_prefix = ' ',
     selection_caret = ' ',
@@ -56,3 +57,4 @@ telescope.setup {
 }
 
 telescope.load_extension('fzy_native')
+

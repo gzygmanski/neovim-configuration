@@ -2,31 +2,31 @@
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
 if not packer_exists then
-	if vim.fn.input("Hent packer.nvim? (y for yada)") ~= "y" then
-		return
-	end
+  if vim.fn.input("Hent packer.nvim? (y for yada)") ~= "y" then
+    return
+  end
 
-	local directory = string.format(
-	'%s/site/pack/packer/opt/',
-	vim.fn.stdpath('data')
-	)
+  local directory = string.format(
+  '%s/site/pack/packer/opt/',
+  vim.fn.stdpath('data')
+  )
 
-	vim.fn.mkdir(directory, 'p')
+  vim.fn.mkdir(directory, 'p')
 
-	local git_clone_cmd = vim.fn.system(string.format(
-	'git clone %s %s',
-	'https://github.com/wbthomason/packer.nvim',
-	directory .. '/packer.nvim'
-	))
+  local git_clone_cmd = vim.fn.system(string.format(
+  'git clone %s %s',
+  'https://github.com/wbthomason/packer.nvim',
+  directory .. '/packer.nvim'
+))
 
-	print(git_clone_cmd)
-	print("Henter packer.nvim...")
+  print(git_clone_cmd)
+  print("Henter packer.nvim...")
 
-	return
+  return
 end
 
 return require('packer').startup(function()
-	use {'wbthomason/packer.nvim', opt = true}
+  use {'wbthomason/packer.nvim', opt = true}
 
   -- editing
   use { 'editorconfig/editorconfig-vim' }
@@ -37,7 +37,7 @@ return require('packer').startup(function()
 
   -- utility
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
-	use { 'TimUntersberger/neogit' }
+  use { 'TimUntersberger/neogit' }
 
   -- lsp
   use { 'neovim/nvim-lspconfig', requires = { 'glepnir/lspsaga.nvim', } }

@@ -71,12 +71,11 @@ gls.left = {
     {
         Mode = {
             provider = function()
-                local alias = {n = 'NORMAL', i = 'INSERT', c = 'COMMAND', V= 'VISUAL', [''] = 'VISUAL'}
+                local alias = {n = 'NORMAL', i = 'INSERT', c = 'COMMAND', V = 'VISUAL', [''] = 'VISUAL', t = 'TERMINAL', R = 'REPLACE'}
                 if not condition.checkwidth() then
-                    alias = {n = 'N', i = 'I', c = 'C', V= 'V', [''] = 'V'}
+                    alias = {n = 'N', i = 'I', c = 'C', V = 'V', [''] = 'V', t = 'T', R = 'R'}
                 end
                 return string.format('   %s  ', alias[vim.fn.mode()])
-                --  
             end,
             highlight = {colors.nord6, colors.nord12, 'bold'},
         }
@@ -90,55 +89,61 @@ gls.left = {
     {
         FileName = {
             provider = function()
-              return string.format('   %s', get_current_file_name())
+              return string.format('   %s ', get_current_file_name())
             end,
             condition = condition.buffer_not_empty,
             highlight = {colors.nord6, colors.nord3}
         }
     },
-    -- {
-    --     GitBranch = {
-    --         provider = function() 
-    --           if vim.bo.filetype ~= 'help' then
-    --             return string.format('   %s ', vcs.get_git_branch()) 
-    --           end
-    --         end,
-    --         -- provider = function() return string.format('  %s ', vcs.get_git_branch()) end,
-    --         condition = function() return condition.check_git_workspace() and condition.checkwidth() end,
-    --         highlight = {colors.nord6, colors.nord3}
-    --     }
-    -- },
+    {
+        GitBranch = {
+            provider = function() 
+              if vim.bo.filetype ~= 'help' then
+                if not condition.checkwidth() then
+                  local length = 1
+                  if string.len(vcs.get_git_branch()) > 3 then  
+                    length = 3
+                  end
+                  return string.format('    %s…  ', string.sub(vcs.get_git_branch(), 1, length)) 
+                  -- return '      '
+                end
+                return string.format('    %s  ', vcs.get_git_branch()) 
+              end
+            end,
+            condition = function() return condition.check_git_workspace() end,
+            highlight = {colors.nord6, colors.nord2}
+        }
+    },
+    {
+        FillWhenEmptyBuffer = {
+            provider = function() return '' end,
+            highlight = {colors.nord6, colors.nord3}
+        }
+    },
 }
 
 gls.right = {
     {
-        Blank = {
-            provider = function() return '   ' end,
-            condition = function() return buffer.get_buffer_filetype() ~= '' end,
-            highlight = {colors.nord6, colors.nord2}
+        LineInfo = {
+            provider = function() return string.format('    %s ', fileinfo.line_column()) end,
+            highlight = {colors.nord6, colors.nord3}
         }
-    },
-    {
-        FileIcon = {
-            provider = fileinfo.get_file_icon,
-            condition = function() return buffer.get_buffer_filetype() ~= '' end,
-            highlight = {
-                colors.nord6,
-                colors.nord2
-            },
-        },
     },
     {
         FileType = {
-            provider = function() return string.format('  %s  ', buffer.get_buffer_filetype()) end,
-            condition = function() return buffer.get_buffer_filetype() ~= '' end,
+            provider = function() 
+              if buffer.get_buffer_filetype() == '' then
+                return '     NONE  '
+              end
+              return string.format('     %s  ', buffer.get_buffer_filetype()) end,
+            -- condition = function() return buffer.get_buffer_filetype() ~= '' end,
             highlight = {colors.nord6, colors.nord2}
         }
     },
     {
-        LineInfo = {
-            provider = function() return string.format('   %s  ', fileinfo.line_column()) end,
-            highlight = {colors.nord6, colors.nord4}
+        Blank = {
+            provider = function() return '  ' end,
+            highlight = {colors.nord6, colors.nord3}
         }
     },
 }
@@ -157,19 +162,19 @@ gls.short_line_left = {
                     if fileinfo.get_current_file_name() ~= '' then
                         return string.format('   %s ', get_current_file_name())
                     else
-                        return '   Buffer  '
+                        return '   Empty Buffer  '
                     end
                 end
             end,
             separator = '',
             highlight = {colors.nord6, colors.nord3}
-        }
+        },
     },
     -- {
     --     FillWhenEmptyBuffer = {
-    --         provider = function() return '' end,
+    --         provider = function() return ' ' end,
     --         condition = not condition.buffer_not_empty,
-    --         highlight = {colors.nord6, colors.nord3}
+    --         highlight = {colors.nord6, colors.nord2}
     --     }
     -- },
 }

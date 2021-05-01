@@ -31,10 +31,9 @@ local function set_keybindings()
     {'n', '<Leader>r', '<CMD>source ~/.config/nvim/init.vim<CR>', {noremap = true, silent = false}},
 
     -- terminal
-    {'n', 'tt', '<CMD>tabnew term://zsh<CR>', {noremap = true, silent = true}},
-    {'n', 'te', '<CMD>e term://zsh<CR>', {noremap = true, silent = true}},
-    {'n', 'tv', '<CMD>vsplit term://zsh<CR>', {noremap = true, silent = true}},
-    {'n', 'ts', '<CMD>split term://zsh<CR>', {noremap = true, silent = true}},
+    {'n', 'te', '<CMD>term<CR>', {noremap = true, silent = true}},
+    {'n', 'tv', '<CMD>vsplit +term<CR>', {noremap = true, silent = true}},
+    {'n', 'ts', '<CMD>split +term<CR>', {noremap = true, silent = true}},
     {'t', ',<Esc>', '<C-\\><C-n>', {noremap = true, silent = true}},
 
     -- clipboard
@@ -64,8 +63,9 @@ local function set_keybindings()
 
     {'n', '<S-h>', '<CMD>BufferPrev<CR>', {noremap = true, silent = true}},
     {'n', '<S-l>', '<CMD>BufferNext<CR>', {noremap = true, silent = true}},
+    {'n', '<leader>aq', '<CMD>BufferCloseAllButCurrent<CR>', {noremap = true, silent = true}},
 
-    {'n', 'mt', '<C-w>T', {noremap = true, silent = true}},
+    -- {'n', 'mt', '<C-w>T', {noremap = true, silent = true}},
     {'n', 'me', '<C-w>=', {noremap = true, silent = true}},
     {'n', 'mm', '<C-w>_<C-w>|', {noremap = true, silent = true}},
 
@@ -119,6 +119,7 @@ local function set_keybindings()
     {'n', '<C-f>', '<CMD>lua require("telescope.builtin").find_files({previewer = false})<CR>', {noremap = true, silent = true}},
     {'n', '<C-b>', '<CMD>lua require("telescope.builtin").buffers({previewer = false})<CR>', {noremap = true, silent = false}},
     {'n', '<C-space>', '<CMD>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', {noremap = true, silent = false}},
+    {'n', '<C-g>', '<CMD>lua require("telescope.builtin").live_grep()<CR>', {noremap = true, silent = false}},
     {'n', '<C-n>', '<CMD>NvimTreeToggle<CR>', {noremap = true, silent = true}},
 
     -- git

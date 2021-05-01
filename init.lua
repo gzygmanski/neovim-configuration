@@ -20,9 +20,9 @@ require('plugins/neogit')
 
 -- custom buffers
 vim.api.nvim_exec([[
-  autocmd TermOpen * setlocal signcolumn=no nonu nornu
+  autocmd TermOpen * setlocal signcolumn=no nonu nornu wrap linebreak
   autocmd FileType NvimTree setlocal signcolumn=no nu rnu
-  autocmd FileType vimwiki setlocal spell spelllang=pl,en
+  autocmd FileType vimwiki setlocal spell spelllang=pl,en tw=80 wrap linebreak
   autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
 ]], true)
 

@@ -1,5 +1,9 @@
 local lspconfig = require('lspconfig')
 
+USER = vim.fn.expand('$USER')
+
+local sumneko_root_path = "/home/" .. USER .. "/.config/nvim/lua-language-server"
+local sumneko_binary = "/home/" .. USER .. "/.config/nvim/lua-language-server/bin/Linux/lua-language-server"
 local eslint = {
     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
     lintIgnoreExitCode = true,
@@ -12,6 +16,33 @@ local eslint = {
 lspconfig.tsserver.setup {
   filetypes = {'javascript', 'javascriptreact', 'typescript', 'typescriptreact'},
   root_dir = function() return vim.loop.cwd() end,
+}
+
+lspconfig.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+  log_level = 3,
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = vim.split(package.path, ';')
+      },
+      diagnostic = {
+        globals = {'vim'}
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+        },
+        maxPreload = 2000,
+        preloadFileSize = 1000
+      },
+      telemetry = {
+        enable = false,
+      },
+    }
+  }
 }
 
 lspconfig.efm.setup {
@@ -35,11 +66,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 })
 
 local opts = {
-  error_sign               = '',
-  warn_sign                = '',
-  hint_sign                = 'ﲉ',
-  infor_sign               = '',
-  dianostic_header_icon    = '',
+  error_sign               = '│',
+  warn_sign                = '│',
+  hint_sign                = '│',
+  infor_sign               = '│',
+  dianostic_header_icon    = '│',
   code_action_icon         = '',
   finder_definition_icon   = '',
   finder_reference_icon    = '',
