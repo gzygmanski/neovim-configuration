@@ -1,0 +1,45 @@
+{
+  "Basic template": {
+    "prefix": "tmp",
+    "body": [
+      "## Referencja",
+      "",
+      "- Źródła: ${2:}",
+      "- Słowa kluczowe: ${3:}",
+      "- Powiązane notatki: ${4:}",
+      "",
+      "## Notatka",
+      "${5:}"
+    ],
+    "description": "Create basic template for zettelkasten notes"
+  },
+  "Index template": {
+    "prefix": "itmp",
+    "body": [
+      "## Referencja",
+      "",
+      "- Źródła: ${1:}",
+      "- Słowa kluczowe: ${2:}",
+      "",
+      "${3:}",
+      "",
+      "## Index",
+      "${4:}"
+    ],
+    "description": "Create index template for zettelkasten notes"
+  },
+  "Link": {
+    "prefix": "ln",
+    "body": "[${1:name}](${2:url})",
+    "description": "Create link"
+  },
+  "Fragment": {
+    "prefix": "frag",
+    "body": [
+      "> **Fragment:${1:}**",
+      "> ${2:}",
+      ""
+    ],
+    "description": "Create citation fragment"
+  }
+}

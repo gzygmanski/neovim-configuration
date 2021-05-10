@@ -1,28 +1,30 @@
 -- packer
-require('plugins')
+require("plugins")
 
 -- basic settings
-require('settings')
-require('keybindings')
+require("settings")
+require("keybindings")
 
 -- lsp
-require('plugins/codeformatter')
-require('plugins/completion')
-require('plugins/lsp')
+require("plugins/codeformatter")
+require("plugins/completion")
+require("plugins/lsp")
 
 -- plugins
-require('plugins/treesitter')
-require('plugins/galaxyline')
-require('plugins/telescope')
-require('plugins/barbar')
-require('plugins/nvimTree')
-require('plugins/neogit')
+require("plugins/treesitter")
+require("plugins/galaxyline")
+require("plugins/telescope")
+require("plugins/barbar")
+require("plugins/nvimTree")
+require("plugins/neogit")
+require("plugins/neuron")
+require("plugins/commentstring")
 
 -- custom buffers
 vim.api.nvim_exec([[
   autocmd TermOpen * setlocal signcolumn=no nonu nornu wrap linebreak
   autocmd FileType NvimTree setlocal signcolumn=no nu rnu
-  autocmd FileType vimwiki setlocal spell spelllang=pl,en tw=80 wrap linebreak
+  autocmd FileType markdown setlocal spell spelllang=pl,en tw=80 wrap linebreak
   autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
 ]], true)
 
@@ -31,6 +33,6 @@ vim.api.nvim_exec([[
   augroup Format
     autocmd!
     autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx FormatWrite
+    autocmd BufWritePost * FormatWrite
   augroup END
 ]], true)

@@ -99,6 +99,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shisam/.local/share/nvim/site/pack/packer/start/neogit"
   },
+  ["neuron.nvim"] = {
+    loaded = true,
+    path = "/home/shisam/.local/share/nvim/site/pack/packer/start/neuron.nvim"
+  },
   ["nord-vim"] = {
     loaded = true,
     path = "/home/shisam/.local/share/nvim/site/pack/packer/start/nord-vim"
@@ -118,6 +122,10 @@ _G.packer_plugins = {
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/shisam/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = true,
+    path = "/home/shisam/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -155,10 +163,6 @@ _G.packer_plugins = {
   ["vim-vsnip"] = {
     loaded = true,
     path = "/home/shisam/.local/share/nvim/site/pack/packer/start/vim-vsnip"
-  },
-  vimwiki = {
-    loaded = true,
-    path = "/home/shisam/.local/share/nvim/site/pack/packer/start/vimwiki"
   }
 }
 
