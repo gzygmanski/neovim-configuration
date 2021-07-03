@@ -25,7 +25,7 @@ local prettier = {
   }
 }
 
-local md_prettier = {
+local mdprettier = {
   {
     cmd = {
       function(file)
@@ -57,7 +57,7 @@ require("format").setup {
   javascriptreact = prettier,
   typescript = prettier,
   typescriptreact = prettier,
-  markdown = md_prettier,
+  markdown = mdprettier,
   html = prettier,
   css = prettier,
   json = prettier,
