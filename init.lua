@@ -13,11 +13,11 @@ require("plugins/lsp")
 -- plugins
 require("plugins/treesitter")
 require("plugins/galaxyline")
-require("plugins/telescope")
+-- require("plugins/telescope")
 require("plugins/barbar")
 require("plugins/nvimTree")
 require("plugins/neogit")
-require("plugins/neuron")
+-- require("plugins/neuron")
 require("plugins/commentstring")
 
 -- custom buffers

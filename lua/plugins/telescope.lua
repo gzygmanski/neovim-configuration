@@ -7,12 +7,12 @@ telescope.setup {
     mappings = {
       i = {
         ["<Esc>"] = actions.close,
-        ["<C-f>"] = actions.close,
         ["<C-s>"] = actions.file_split
       }
     },
     prompt_title = false,
     prompt_prefix = ' ',
+    previewer = false,
     selection_caret = ' ',
     layout_strategy = 'vertical',
     layout_config = {
@@ -24,6 +24,7 @@ telescope.setup {
     },
     borderchars = {'─', '│', '─', '│', '┌', '┐', '┘', '└'},
     color_devicons = false,
+    file_ignore_patterns = {'node_modules/.*'},
     use_less = false
   }
 }
