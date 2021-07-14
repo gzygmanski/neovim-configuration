@@ -147,7 +147,7 @@ local function set_keybindings()
     }, -- files
     {
       "n", "<C-f>",
-      "<CMD>lua require(\"telescope.builtin\").find_files({previewer = false})<CR>",
+      "<CMD>lua require(\"telescope.builtin\").git_files({previewer = false})<CR>",
       {noremap = true, silent = true}
     }, {
       "n", "<C-b>",
@@ -158,7 +158,7 @@ local function set_keybindings()
       "<CMD>lua require(\"telescope.builtin\").current_buffer_fuzzy_find()<CR>",
       {noremap = true, silent = false}
     }, {
-      "n", "<C-g>", "<CMD>lua require(\"telescope.builtin\").git_files()<CR>",
+      "n", "<C-g>", "<CMD>lua require(\"telescope.builtin\").find_files()<CR>",
       {noremap = true, silent = false}
     },
     {"n", "<C-n>", "<CMD>NvimTreeToggle<CR>", {noremap = true, silent = true}},

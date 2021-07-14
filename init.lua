@@ -25,7 +25,7 @@ vim.api.nvim_exec([[
   autocmd TermOpen * setlocal signcolumn=no nonu nornu wrap linebreak
   autocmd FileType NvimTree setlocal signcolumn=no nu rnu
   autocmd FileType markdown setlocal spell spelllang=pl,en tw=80 wrap linebreak
-  autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
+  autocmd FileType html,css,javascript,javascriptreact,typescriptreact EmmetInstall
 ]], true)
 
 -- auto-format
