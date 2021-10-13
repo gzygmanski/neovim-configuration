@@ -147,25 +147,26 @@ local function set_keybindings()
     }, -- files
     {
       "n", "<C-f>",
-      "<CMD>lua require(\"telescope.builtin\").git_files({previewer = false})<CR>",
+      "<CMD>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = true}
     }, {
       "n", "<C-b>",
-      "<CMD>lua require(\"telescope.builtin\").buffers({previewer = false})<CR>",
+      "<CMD>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = false}
     }, {
       "n", "<C-space>",
-      "<CMD>lua require(\"telescope.builtin\").current_buffer_fuzzy_find()<CR>",
+      "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = false}
     }, {
-      "n", "<C-g>", "<CMD>lua require(\"telescope.builtin\").find_files()<CR>",
+      "n", "<C-g>",
+      "<CMD>lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').preview))<CR>",
       {noremap = true, silent = false}
     },
     {"n", "<C-n>", "<CMD>NvimTreeToggle<CR>", {noremap = true, silent = true}},
 
     -- git
     {
-      "n", "gs", "<CMD>lua require(\"neogit\").status.create(\"split\")<CR>",
+      "n", "gs", "<CMD>lua require('neogit').status.create('split')<CR>",
       {noremap = true, silent = true}
     }, -- start the neuron server and render markdown, auto reload on save
     {

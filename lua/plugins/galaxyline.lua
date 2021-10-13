@@ -89,7 +89,10 @@ gls.left = {
     {
         FileName = {
             provider = function()
-              return string.format('   %s ', get_current_file_name())
+              if #get_current_file_name() > 25 then
+                return string.format('    %s…  ', string.sub(get_current_file_name(), 1, 25)) 
+              end
+              return string.format('    %s  ', get_current_file_name()) 
             end,
             condition = condition.buffer_not_empty,
             highlight = {colors.nord6, colors.nord3}
@@ -100,14 +103,18 @@ gls.left = {
             provider = function() 
               if vim.bo.filetype ~= 'help' then
                 if not condition.checkwidth() then
-                  local length = 1
-                  if string.len(vcs.get_git_branch()) > 3 then  
-                    length = 3
-                  end
-                  return string.format('    %s…  ', string.sub(vcs.get_git_branch(), 1, length)) 
-                  -- return '      '
+                  -- local length = 1
+                  -- if string.len(vcs.get_git_branch()) > 3 then  
+                  --   length = 3
+                  -- end
+                  -- return string.format('    %s…  ', string.sub(vcs.get_git_branch(), 1, length)) 
+                  return '      '
                 end
-                return string.format('    %s  ', vcs.get_git_branch()) 
+                if #vcs.get_git_branch() > 25 then
+                  return string.format('    %s…  ', string.sub(vcs.get_git_branch(), 1, 25)) 
+                else
+                  return string.format('    %s  ', vcs.get_git_branch()) 
+                end
               end
             end,
             condition = function() return condition.check_git_workspace() end,

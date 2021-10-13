@@ -1,37 +1,6 @@
-vim.g.nvim_tree_side = 'left'
-vim.g.nvim_tree_width = 37
-vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
-vim.g.nvim_tree_auto_open = 0
-vim.g.nvim_tree_auto_close = 1
-vim.g.nvim_tree_follow = 1
-vim.g.nvim_tree_indent_markers = 0
-vim.g.nvim_tree_hide_dotfiles = 0
-vim.g.nvim_tree_git_hl = 0
-vim.g.nvim_tree_root_folder_modifier = ':~'
-vim.g.nvim_tree_tab_open = 0
-vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 0}
-vim.g.nvim_tree_width_allow_resize = 1
-vim.g.nvim_tree_highlight_opened_files = 0
-vim.g.nvim_tree_special_files = {}
-vim.g.nvim_tree_disable_default_keybindings = 1
-vim.g.nvim_tree_disable_netrw = 0 -- 1 by default, disables netrw
-vim.g.nvim_tree_hijack_netrw = 0 -- 1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
-
-vim.g.nvim_tree_icons = {
-  default = '   ',
-  symlink = '   ',
-  folder = {
-    default = "   ",
-    open = "  ﱮ ",
-    empty = "   ",
-    empty_open = "  ﱮ ",
-    symlink = "   "
-  }
-}
-
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
-vim.g.nvim_tree_bindings = {
+local list = {
   {key = {"e"}, cb = tree_cb("edit")}, {key = {"l"}, cb = tree_cb("edit")},
   {key = {"<CR>"}, cb = tree_cb("cd")}, {key = "v", cb = tree_cb("vsplit")},
   {key = "s", cb = tree_cb("split")}, {key = "t", cb = tree_cb("tabnew")},
@@ -54,6 +23,46 @@ vim.g.nvim_tree_bindings = {
   {key = "]c", cb = tree_cb("next_git_item")},
   {key = "<BS>", cb = tree_cb("dir_up")}, {key = "q", cb = tree_cb("close")},
   {key = "g?", cb = tree_cb("toggle_help")}
+}
+
+vim.g.nvim_tree_indent_markers = 0
+vim.g.nvim_tree_hide_dotfiles = 0
+vim.g.nvim_tree_git_hl = 1
+vim.g.nvim_tree_root_folder_modifier = ':~'
+vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 1}
+vim.g.nvim_tree_icon_padding = ' '
+vim.g.nvim_tree_width_allow_resize = 1
+vim.g.nvim_tree_highlight_opened_files = 0
+vim.g.nvim_tree_special_files = {}
+
+vim.g.nvim_tree_icons = {
+  default = '  ',
+  symlink = '  ',
+  folder = {
+    default = "  ",
+    open = "  ﱮ",
+    empty = "  ",
+    empty_open = "  ﱮ",
+    symlink = "  ",
+    symlink_open = "  "
+  },
+  lsp = {hint = "║", info = "║", warning = "║", error = "║"}
+}
+
+require'nvim-tree'.setup {
+  auto_close = false,
+  auto_open = true,
+  hijack_cursor = false,
+  update_cwd = true,
+  lsp_diagnostics = true,
+  follow = true,
+  update_focused_file = {enable = true, update_cwd = true, ignore_list = {}},
+  view = {
+    width = 37,
+    side = 'left',
+    auto_resize = false,
+    mappings = {custom_only = true, list = list}
+  }
 }
 
 -- disable word wrap

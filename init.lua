@@ -16,7 +16,7 @@ require("plugins/galaxyline")
 -- require("plugins/telescope")
 require("plugins/barbar")
 require("plugins/nvimTree")
-require("plugins/neogit")
+-- require("plugins/neogit")
 -- require("plugins/neuron")
 require("plugins/commentstring")
 
