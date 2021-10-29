@@ -72,7 +72,10 @@ local opts = {
   finder_reference_icon = '',
   definition_preview_icon = '',
   border_style = 0,
-  rename_prompt_prefix = ''
+  rename_prompt_prefix = '',
+  code_action_prompt = {
+    enable = false
+  }
 }
 
 require('lspsaga').init_lsp_saga(opts)

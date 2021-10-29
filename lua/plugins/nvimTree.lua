@@ -22,7 +22,7 @@ local list = {
   {key = "[c", cb = tree_cb("prev_git_item")},
   {key = "]c", cb = tree_cb("next_git_item")},
   {key = "<BS>", cb = tree_cb("dir_up")}, {key = "q", cb = tree_cb("close")},
-  {key = "g?", cb = tree_cb("toggle_help")}
+  {key = "?", cb = tree_cb("toggle_help")}
 }
 
 vim.g.nvim_tree_indent_markers = 0
@@ -30,7 +30,7 @@ vim.g.nvim_tree_hide_dotfiles = 0
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_root_folder_modifier = ':~'
 vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 1}
-vim.g.nvim_tree_icon_padding = ' '
+vim.g.nvim_tree_icon_padding = '  '
 vim.g.nvim_tree_width_allow_resize = 1
 vim.g.nvim_tree_highlight_opened_files = 0
 vim.g.nvim_tree_special_files = {}
@@ -46,7 +46,6 @@ vim.g.nvim_tree_icons = {
     symlink = "  ",
     symlink_open = "  "
   },
-  lsp = {hint = "║", info = "║", warning = "║", error = "║"}
 }
 
 require'nvim-tree'.setup {
@@ -54,7 +53,6 @@ require'nvim-tree'.setup {
   auto_open = true,
   hijack_cursor = false,
   update_cwd = true,
-  lsp_diagnostics = true,
   follow = true,
   update_focused_file = {enable = true, update_cwd = true, ignore_list = {}},
   view = {
@@ -62,6 +60,10 @@ require'nvim-tree'.setup {
     side = 'left',
     auto_resize = false,
     mappings = {custom_only = true, list = list}
+  },
+  diagnostic = {
+    enable = true,
+    icons = {hint = "║", info = "║", warning = "║", error = "║"}
   }
 }
 

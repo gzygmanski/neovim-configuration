@@ -20,7 +20,6 @@ end
 
 return require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
-  -- use {'nvim-lua/plenary.nvim'}
 
   -- editing
   use {'editorconfig/editorconfig-vim'}
@@ -31,9 +30,8 @@ return require('packer').startup(function()
 
   -- utility
   use {'kyazdani42/nvim-tree.lua'}
-  -- use {'gzygmanski/nvim-tree.lua'}
   use {'sindrets/diffview.nvim'}
-  -- use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+  use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
   -- use {
   --   'gzygmanski/neuron.nvim',
   --   branch = 'match-links',

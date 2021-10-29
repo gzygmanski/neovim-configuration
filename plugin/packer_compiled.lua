@@ -73,6 +73,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shisam/.local/share/nvim/site/pack/packer/start/barbar.nvim"
   },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/home/shisam/.local/share/nvim/site/pack/packer/start/diffview.nvim"
+  },
   ["editorconfig-vim"] = {
     loaded = true,
     path = "/home/shisam/.local/share/nvim/site/pack/packer/start/editorconfig-vim"
@@ -92,6 +96,10 @@ _G.packer_plugins = {
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/home/shisam/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+  },
+  neogit = {
+    loaded = true,
+    path = "/home/shisam/.local/share/nvim/site/pack/packer/start/neogit"
   },
   ["nord-vim"] = {
     loaded = true,

@@ -42,7 +42,11 @@ local function set_keybindings()
     {"n", "<leader>p", "\"*p", {noremap = true, silent = true}},
     {"n", "<leader>P", "\"*P", {noremap = true, silent = true}},
 
-    -- splits & tabs
+    -- buffers
+    {"n", "<leader>ne", "<CMD>enew<CR>", {noremap = true, silent = true}},
+    {"n", "<leader>nv", "<CMD>vnew<CR>", {noremap = true, silent = true}},
+    {"n", "<leader>ns", "<CMD>new<CR>", {noremap = true, silent = true}},
+
     {"n", "<leader>s", "<C-w>s", {noremap = true, silent = true}},
     {"n", "<leader>v", "<C-w>v", {noremap = true, silent = true}},
 
@@ -57,16 +61,16 @@ local function set_keybindings()
     {"n", "mk", "<C-w>K", {noremap = true, silent = true}},
     {"n", "ml", "<C-w>L", {noremap = true, silent = true}},
 
-    {"n", "mrr", "<C-w>r", {noremap = true, silent = true}},
-    {"n", "mrx", "<C-w>x", {noremap = true, silent = true}},
+    {"n", "mrr", "<CMD>NvimTreeClose<CR><C-w>r", {noremap = true, silent = true}},
+    {"n", "mrx", "<CMD>NvimTreeClose<CR><C-w>x", {noremap = true, silent = true}},
 
     {"n", "<S-h>", "<CMD>BufferPrev<CR>", {noremap = true, silent = true}},
     {"n", "<S-l>", "<CMD>BufferNext<CR>", {noremap = true, silent = true}}, {
       "n", "<leader>aq", "<CMD>BufferCloseAllButCurrent<CR>",
       {noremap = true, silent = true}
     }, -- {'n', 'mt', '<C-w>T', {noremap = true, silent = true}},
-    {"n", "me", "<C-w>=", {noremap = true, silent = true}},
-    {"n", "mm", "<C-w>_<C-w>|", {noremap = true, silent = true}},
+    {"n", "me", "<CMD>NvimTreeClose<CR><C-w>=", {noremap = true, silent = true}},
+    {"n", "mm", "<CMD>NvimTreeClose<CR><C-w>_<C-w>|", {noremap = true, silent = true}},
 
     {"n", "mrh", "<CMD>vertical res -20<CR>", {noremap = true, silent = true}},
     {"n", "mrj", "<CMD>res +10<CR>", {noremap = true, silent = true}},

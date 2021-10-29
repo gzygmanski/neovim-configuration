@@ -1,6 +1,7 @@
 local neogit = require("neogit")
 
 neogit.setup {
+  kind = "split",
   disable_signs = false,
   -- customize displayed signs
   signs = {
@@ -9,14 +10,8 @@ neogit.setup {
     item = { "", "" },
     hunk = { "", "" },
   },
-  -- override/add mappings
-  -- mappings = {
-  --   -- modify status buffer mappings
-  --   status = {
-  --     -- Adds a mapping with "B" as key that does the "BranchPopup" command
-  --     ["B"] = "BranchPopup",
-  --     -- Removes the default mapping of "s"
-  --     ["s"] = "",
-  --   }
-  -- }
+  integrations = {
+    diffview = true
+  },
+  disable_context_highlighting = true
 }
