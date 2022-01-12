@@ -15,7 +15,7 @@ vim.g.user_emmet_settings = {
     extends = 'jsx',
   },
   typescriptreact = {
-    extends = 'jsx',
+    extends = 'tsx',
   },
 }
 

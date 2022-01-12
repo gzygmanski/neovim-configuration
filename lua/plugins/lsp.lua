@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local util = require('lspconfig.util')
 
 USER = vim.fn.expand('$USER')
 
@@ -16,8 +17,20 @@ local eslint = {
 }
 
 lspconfig.tsserver.setup {
-  filetypes = {'javascript', 'javascriptreact', 'typescript', 'typescriptreact'},
-  root_dir = function() return vim.loop.cwd() end
+  init_options = { hostInfo = 'neovim' },
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+  },
+  --root_dir = function() return vim.loop.cwd() end
+  root_dir = function(fname)
+    return util.root_pattern 'tsconfig.json'(fname)
+      or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
+  end,
 }
 
 lspconfig.sumneko_lua.setup {

@@ -26,7 +26,6 @@ local list = {
 }
 
 vim.g.nvim_tree_indent_markers = 0
-vim.g.nvim_tree_hide_dotfiles = 0
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_root_folder_modifier = ':~'
 vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 1}
@@ -64,6 +63,13 @@ require'nvim-tree'.setup {
   diagnostic = {
     enable = true,
     icons = {hint = "║", info = "║", warning = "║", error = "║"}
+  },
+  filters = {
+    dotfiles = false,
+  },
+  git = {
+    enable = true,
+    ignore = true 
   }
 }
 
