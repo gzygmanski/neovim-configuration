@@ -65,7 +65,7 @@ require'nvim-tree'.setup {
     icons = {hint = "║", info = "║", warning = "║", error = "║"}
   },
   filters = {dotfiles = false},
-  git = {enable = true, ignore = true}
+  git = {enable = true, ignore = false}
 }
 
 -- disable word wrap

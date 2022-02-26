@@ -24,6 +24,11 @@ function get_current_file_name()
   return file .. ' '
 end
 
+function get_cursor_pos()
+  local r, c = unpack(vim.api.nvim_win_get_cursor(0))
+  return string.format('%s : %s', r, c)
+end
+
 local colors = {
   -- polar night
   nord1 = '#2e3440',
@@ -148,7 +153,7 @@ gls.right = {
   }, {
     LineInfo = {
       provider = function()
-        return string.format('     %s ', fileinfo.line_column())
+        return string.format('   ﱓ  %s  ', get_cursor_pos())
       end,
       highlight = {colors.nord6, colors.nord3}
     }
@@ -180,9 +185,9 @@ gls.short_line_left = {
           if filetype == 'NvimTree' then return '     Explorer  ' end
         else
           if fileinfo.get_current_file_name() ~= '' then
-            return string.format('   %s ', get_current_file_name())
+            return string.format('    %s ', fileinfo.get_current_file_name())
           else
-            return '   Empty Buffer  '
+            return '   ﬘  buffer  '
           end
         end
       end,

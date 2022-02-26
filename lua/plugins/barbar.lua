@@ -10,5 +10,6 @@ vim.g.bufferline = {
   closable = true,
   clickable = false,
   semantic_letters = true,
-  maximum_padding = 1
+  maximum_padding = 1,
+  no_name_title = 'buffer'
 }

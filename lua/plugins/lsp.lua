@@ -17,20 +17,20 @@ local eslint = {
 }
 
 lspconfig.tsserver.setup {
-  init_options = { hostInfo = 'neovim', documentFormatting = false, codeAction = false },
-  filetypes = {
-    'javascript',
-    'javascriptreact',
-    'javascript.jsx',
-    'typescript',
-    'typescriptreact',
-    'typescript.tsx',
+  init_options = {
+    hostInfo = 'neovim',
+    documentFormatting = false,
+    codeAction = false
   },
-  --root_dir = function() return vim.loop.cwd() end
+  filetypes = {
+    'javascript', 'javascriptreact', 'javascript.jsx', 'typescript',
+    'typescriptreact', 'typescript.tsx'
+  },
+  -- root_dir = function() return vim.loop.cwd() end
   root_dir = function(fname)
-    return util.root_pattern 'tsconfig.json'(fname)
-      or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
-  end,
+    return util.root_pattern 'tsconfig.json'(fname) or
+             util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
+  end
 }
 
 lspconfig.sumneko_lua.setup {
@@ -69,26 +69,30 @@ lspconfig.efm.setup {
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     signs = {severity_limit = "Warning"},
-    virtual_text = {spacing = 0, prefix = '', severity_limit = "Warning"},
+    virtual_text = {spacing = 1, prefix = '', severity_limit = "Warning"},
     underline = false,
     update_in_insert = false
   })
 
-local opts = {
-  error_sign = '║',
-  warn_sign = '║',
-  hint_sign = '║',
-  infor_sign = '║',
-  dianostic_header_icon = '║',
-  code_action_icon = '',
-  finder_definition_icon = '',
-  finder_reference_icon = '',
-  definition_preview_icon = '',
-  border_style = 0,
-  rename_prompt_prefix = '',
-  code_action_prompt = {
-    enable = false
-  }
-}
+local signs = {Error = "¤", Warn = "¤", Hint = "¤", Info = "¤"}
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+end
 
-require('lspsaga').init_lsp_saga(opts)
+-- local opts = {
+--   error_sign = '║',
+--   warn_sign = '║',
+--   hint_sign = '║',
+--   infor_sign = '║',
+--   dianostic_header_icon = '║',
+--   code_action_icon = '',
+--   finder_definition_icon = '',
+--   finder_reference_icon = '',
+--   definition_preview_icon = '',
+--   border_style = 0,
+--   rename_prompt_prefix = '',
+--   code_action_prompt = {enable = false}
+-- }
+
+-- require('lspsaga').init_lsp_saga(opts)
