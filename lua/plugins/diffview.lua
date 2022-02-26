@@ -2,6 +2,7 @@ local cb = require'diffview.config'.diffview_callback
 
 require'diffview'.setup {
   use_icons = false,
+  enhanced_diff_hl = true,
   file_panel = {position = 'bottom', height = 10, listing_style = 'list'},
   file_history_panel = {position = 'bottom', height = 10},
   key_bindings = {
