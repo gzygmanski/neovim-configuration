@@ -15,7 +15,8 @@ require("plugins/treesitter")
 require("plugins/galaxyline")
 require("plugins/barbar")
 require("plugins/nvimTree")
--- require("plugins/neogit")
+require("plugins/neogit")
+require("plugins/diffview")
 require("plugins/commentstring")
 
 -- custom buffers

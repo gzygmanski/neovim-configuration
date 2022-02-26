@@ -142,8 +142,8 @@ gls.right = {
         if active_clients then
           local count = 0
           for _, client in ipairs(active_clients) do
-            count = count +
-                      table.getn(vim.diagnostic.get(0, {severity = "error"}))
+            count = count
+            table.getn(vim.diagnostic.get(0, {severity = "error"}))
           end
           if count > 0 then return string.format('   E%s  ', count) end
         end
@@ -175,7 +175,7 @@ gls.right = {
   }
 }
 
-gl.short_line_list = {'NvimTree'}
+gl.short_line_list = {'NvimTree', 'DiffviewFiles'}
 gls.short_line_left = {
   {
     BufferName = {
@@ -183,6 +183,9 @@ gls.short_line_left = {
         if vim.fn.index(gl.short_line_list, vim.bo.filetype) ~= -1 then
           local filetype = vim.bo.filetype
           if filetype == 'NvimTree' then return '     Explorer  ' end
+          if filetype == 'DiffviewFiles' then
+            return '     Diffview  '
+          end
         else
           if fileinfo.get_current_file_name() ~= '' then
             return string.format('    %s ', fileinfo.get_current_file_name())

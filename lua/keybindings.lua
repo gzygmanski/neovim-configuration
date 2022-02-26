@@ -177,8 +177,8 @@ local function set_keybindings()
     {
       "n", "gs", "<CMD>lua require('neogit').status.create('split')<CR>",
       {noremap = true, silent = true}
-    }, -- start the neuron server and render markdown, auto reload on save
-    {
+    }, {"n", "do", ":DiffviewOpen ", {noremap = true, silent = false}},
+    {"n", "dq", "<CMD>DiffviewClose<CR>", {noremap = true, silent = true}}, {
       "n", "zS",
       "<CMD>lua require'neuron'.rib {address = '192.168.2.100:8200', verbose = false}<CR>",
       {noremap = false, silent = true}
