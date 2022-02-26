@@ -44,7 +44,7 @@ vim.g.nvim_tree_icons = {
     empty_open = "  ﱮ",
     symlink = "  ",
     symlink_open = "  "
-  },
+  }
 }
 
 require'nvim-tree'.setup {
@@ -64,13 +64,8 @@ require'nvim-tree'.setup {
     enable = true,
     icons = {hint = "║", info = "║", warning = "║", error = "║"}
   },
-  filters = {
-    dotfiles = false,
-  },
-  git = {
-    enable = true,
-    ignore = true 
-  }
+  filters = {dotfiles = false},
+  git = {enable = true, ignore = true}
 }
 
 -- disable word wrap

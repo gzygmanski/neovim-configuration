@@ -17,7 +17,7 @@ local eslint = {
 }
 
 lspconfig.tsserver.setup {
-  init_options = { hostInfo = 'neovim' },
+  init_options = { hostInfo = 'neovim', documentFormatting = false, codeAction = false },
   filetypes = {
     'javascript',
     'javascriptreact',

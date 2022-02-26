@@ -60,6 +60,6 @@ require("format").setup {
   markdown = mdprettier,
   html = prettier,
   css = prettier,
-  json = prettier
-  -- lua = luaformatter
+  json = prettier,
+  lua = luaformatter
 }

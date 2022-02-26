@@ -6,12 +6,10 @@ neogit.setup {
   -- customize displayed signs
   signs = {
     -- { CLOSED, OPENED }
-    section = { "", "" },
-    item = { "", "" },
-    hunk = { "", "" },
+    section = {"", ""},
+    item = {"", ""},
+    hunk = {"", ""}
   },
-  integrations = {
-    diffview = true
-  },
+  integrations = {diffview = true},
   disable_context_highlighting = true
 }

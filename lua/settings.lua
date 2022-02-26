@@ -46,7 +46,7 @@ local options = {
   ttimeoutlen = 10,
   undolevels = 1000,
   updatetime = 300,
-  wrap = false,
+  wrap = false
 }
 
 setOptions(options)
