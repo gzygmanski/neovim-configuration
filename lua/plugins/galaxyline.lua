@@ -142,8 +142,9 @@ gls.right = {
         if active_clients then
           local count = 0
           for _, client in ipairs(active_clients) do
-            count = count
-            table.getn(vim.diagnostic.get(0, {severity = "error"}))
+            local numOfErrors = table.getn(
+              vim.diagnostic.get(0, {severity = "error"}))
+            count = count + numOfErrors
           end
           if count > 0 then return string.format('   E%s  ', count) end
         end
@@ -188,7 +189,7 @@ gls.short_line_left = {
           end
         else
           if fileinfo.get_current_file_name() ~= '' then
-            return string.format('    %s ', fileinfo.get_current_file_name())
+            return string.format('    %s  ', get_current_file_name())
           else
             return '   ﬘  buffer  '
           end

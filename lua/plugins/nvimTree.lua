@@ -60,9 +60,9 @@ require'nvim-tree'.setup {
     auto_resize = false,
     mappings = {custom_only = true, list = list}
   },
-  diagnostic = {
-    enable = true,
-    icons = {hint = "║", info = "║", warning = "║", error = "║"}
+  diagnostics = {
+    enable = false,
+    icons = {error = "", warn = "", hint = "", info = ""}
   },
   filters = {dotfiles = false},
   git = {enable = true, ignore = false}
