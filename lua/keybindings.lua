@@ -30,10 +30,12 @@ local function set_keybindings()
       "n", "<Leader>r", "<CMD>source ~/.config/nvim/init.vim<CR>",
       {noremap = true, silent = false}
     }, -- terminal
-    {"n", "te", "<CMD>term<CR>", {noremap = true, silent = true}},
-    {"n", "tv", "<CMD>vsplit +term<CR>", {noremap = true, silent = true}},
+    {
+      "n", "te", "<CMD>term<CR><CMD>BufferMove 1<CR>",
+      {noremap = true, silent = true}
+    }, {"n", "tv", "<CMD>vsplit +term<CR>", {noremap = true, silent = true}},
     {"n", "ts", "<CMD>split +term<CR>", {noremap = true, silent = true}},
-    {"t", ",<Esc>", "<C-\\><C-n>", {noremap = true, silent = true}},
+    {"t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true}},
 
     -- clipboard
     {"v", "<leader>yy", "\"*yy", {noremap = true, silent = true}},
@@ -86,9 +88,11 @@ local function set_keybindings()
     {"n", "gi", "^", {noremap = true, silent = true}},
     {"n", "ga", "<C-^>", {noremap = true, silent = true}}, -- edit
     {"n", "J", "<CMD>m+<CR>", {noremap = true, silent = true}},
-    {"n", "K", "<CMD>m-2<CR>", {noremap = true, silent = true}},
-    {"i", "<leader>a", "<Right>", {noremap = false, silent = true}},
-    {"i", "((", "()<left>", {noremap = true, silent = true}},
+    {"n", "K", "<CMD>m-2<CR>", {noremap = true, silent = true}}, {
+      "i", "<leader>a",
+      "<Left><CMD>call search(\"\\\\%\" . line(\".\") . \"l\\\\()\\\\|}\\\\|]\\\\|>\\\\|'\\\"\\\\|`\\\\)\", \"We\")<CR><Right>",
+      {noremap = false, silent = true}
+    }, {"i", "((", "()<left>", {noremap = true, silent = true}},
     {"i", "{{", "{}<left>", {noremap = true, silent = true}},
     {"i", "[[", "[]<left>", {noremap = true, silent = true}},
     {"i", "<<", "<><left>", {noremap = true, silent = true}},
@@ -163,12 +167,16 @@ local function set_keybindings()
       "<CMD>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = false}
     }, {
-      "n", "<C-space>",
+      "n", "<C-s>",
       "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = false}
     }, {
-      "n", "<C-g>",
+      "n", "<C-Space>",
       "<CMD>lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').preview))<CR>",
+      {noremap = true, silent = false}
+    }, {
+      "n", "<C-g>",
+      "<CMD>lua require('telescope.builtin').git_branches(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = false}
     },
     {"n", "<C-n>", "<CMD>NvimTreeToggle<CR>", {noremap = true, silent = true}},
