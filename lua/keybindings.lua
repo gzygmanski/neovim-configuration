@@ -90,7 +90,7 @@ local function set_keybindings()
     {"n", "J", "<CMD>m+<CR>", {noremap = true, silent = true}},
     {"n", "K", "<CMD>m-2<CR>", {noremap = true, silent = true}}, {
       "i", "<leader>a",
-      "<Left><CMD>call search(\"\\\\%\" . line(\".\") . \"l\\\\()\\\\|}\\\\|]\\\\|>\\\\|'\\\"\\\\|`\\\\)\", \"We\")<CR><Right>",
+      "<Left><CMD>call search(\"\\\\%\" . line(\".\") . \"l\\\\()\\\\|}\\\\|]\\\\|>\\\\|'\\\\|\\\"\\\\|`\\\\)\", \"We\")<CR><Right>",
       {noremap = false, silent = true}
     }, {"i", "((", "()<left>", {noremap = true, silent = true}},
     {"i", "{{", "{}<left>", {noremap = true, silent = true}},
