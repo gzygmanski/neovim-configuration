@@ -55,7 +55,7 @@ require'nvim-tree'.setup {
   follow = true,
   update_focused_file = {enable = true, update_cwd = true, ignore_list = {}},
   view = {
-    width = 37,
+    width = 40,
     side = 'left',
     auto_resize = false,
     mappings = {custom_only = true, list = list}

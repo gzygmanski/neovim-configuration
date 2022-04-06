@@ -108,12 +108,12 @@ gls.left = {
   }, {
     GitBranch = {
       provider = function()
+        if buffer.get_buffer_filetype() == '' then return end
         if vim.bo.filetype ~= 'help' then
-          local git_branch = ''
-          if pcall(vcs.get_git_branch) then
-            git_branch = vcs.get_git_branch()
-          end
           if not condition.checkwidth() then return '      ' end
+          local git_branch = ''
+          local status, retval = pcall(vcs.get_git_branch)
+          if status then git_branch = retval end
           if #git_branch > 25 then
             return
               string.format('    %s…  ', string.sub(git_branch, 1, 25))

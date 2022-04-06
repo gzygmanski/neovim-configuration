@@ -163,7 +163,7 @@ local function set_keybindings()
       "<CMD>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = true}
     }, {
-      "n", "<C-b>",
+      "n", "<leader>gb",
       "<CMD>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = false}
     }, {
@@ -171,14 +171,19 @@ local function set_keybindings()
       "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = false}
     }, {
-      "n", "<C-Space>",
+      "n", "<leader>gr",
       "<CMD>lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').preview))<CR>",
       {noremap = true, silent = false}
     }, {
-      "n", "<C-g>",
+      "n", "<leader>gc",
       "<CMD>lua require('telescope.builtin').git_branches(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = false}
+    }, {
+      "n", "<C-Space>",
+      "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').preview))<CR>",
+      {noremap = true, silent = false}
     },
+
     {"n", "<C-n>", "<CMD>NvimTreeToggle<CR>", {noremap = true, silent = true}},
 
     -- git

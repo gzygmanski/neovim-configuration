@@ -48,7 +48,7 @@ return require('packer').startup(function()
       'nvim-telescope/telescope-fzy-native.nvim'
     }
   }
-  use {'lukas-reineke/format.nvim'}
+  use {'lukas-reineke/format.nvim', tag = 'v1'}
 
   -- theme
   use {'gzygmanski/nord-vim'}

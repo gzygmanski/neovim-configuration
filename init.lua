@@ -6,9 +6,9 @@ require("settings")
 require("keybindings")
 
 -- lsp
-require("plugins/codeformatter")
-require("plugins/completion")
 require("plugins/lsp")
+require("plugins/completion")
+require("plugins/codeformatter")
 
 -- plugins
 require("plugins/treesitter")
