@@ -61,5 +61,6 @@ require("format").setup {
   html = prettier,
   css = prettier,
   json = prettier,
+  yml = prettier,
   lua = luaformatter
 }

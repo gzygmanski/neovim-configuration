@@ -22,6 +22,7 @@ local list = {
   {key = "[c", cb = tree_cb("prev_git_item")},
   {key = "]c", cb = tree_cb("next_git_item")},
   {key = "<BS>", cb = tree_cb("dir_up")}, {key = "q", cb = tree_cb("close")},
+  {key = "W", cb = tree_cb("collapse_all")},
   {key = "?", cb = tree_cb("toggle_help")}
 }
 

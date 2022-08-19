@@ -68,7 +68,7 @@ lspconfig.efm.setup {
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    signs = {severity_limit = "Warning"},
+    signs = {severity_limit = "Hint"},
     virtual_text = {spacing = 1, prefix = '', severity_limit = "Warning"},
     underline = false,
     update_in_insert = false
@@ -79,20 +79,3 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
 end
-
--- local opts = {
---   error_sign = '║',
---   warn_sign = '║',
---   hint_sign = '║',
---   infor_sign = '║',
---   dianostic_header_icon = '║',
---   code_action_icon = '',
---   finder_definition_icon = '',
---   finder_reference_icon = '',
---   definition_preview_icon = '',
---   border_style = 0,
---   rename_prompt_prefix = '',
---   code_action_prompt = {enable = false}
--- }
-
--- require('lspsaga').init_lsp_saga(opts)

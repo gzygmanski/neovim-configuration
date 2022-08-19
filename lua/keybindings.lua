@@ -12,6 +12,11 @@ function within_empty_pair()
   return is_empty_pair(current)
 end
 
+function set_gotobuffernr_keybindings()
+  local keybindings = {}
+  return keybindings
+end
+
 local function set_keybindings()
   local keybindings = {
     -- {'mode', 'keybindings', 'command', '{noremap=bool', 'silent=bool', expr=bool}}
@@ -31,11 +36,11 @@ local function set_keybindings()
       {noremap = true, silent = false}
     }, -- terminal
     {
-      "n", "te", "<CMD>term<CR><CMD>BufferMove 1<CR>",
+      "n", "te", "<CMD>term<CR><CMD>BufferMove 0<CR>",
       {noremap = true, silent = true}
     }, {"n", "tv", "<CMD>vsplit +term<CR>", {noremap = true, silent = true}},
     {"n", "ts", "<CMD>split +term<CR>", {noremap = true, silent = true}},
-    {"t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true}},
+    {"t", "<Esc><Esc>", "<C-\\><C-n>", {noremap = true, silent = true}},
 
     -- clipboard
     {"v", "<leader>yy", "\"*yy", {noremap = true, silent = true}},
@@ -163,6 +168,10 @@ local function set_keybindings()
       "<CMD>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = true}
     }, {
+      "n", "g0",
+      "<CMD>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
+      {noremap = true, silent = false}
+    }, {
       "n", "<leader>gb",
       "<CMD>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown(require('./plugins/telescope_style').no_preview))<CR>",
       {noremap = true, silent = false}
@@ -197,6 +206,13 @@ local function set_keybindings()
       {noremap = false, silent = true}
     }
   }
+
+  for i = 1, 9 do
+    table.insert(keybindings, {
+      "n", "g" .. i, "<CMD>BufferGoto " .. i .. "<CR>",
+      {noremap = true, silent = true}
+    })
+  end
 
   for _, key in pairs(keybindings) do keymap(key[1], key[2], key[3], key[4]) end
 end

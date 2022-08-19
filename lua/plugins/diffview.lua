@@ -1,6 +1,6 @@
-local cb = require'diffview.config'.diffview_callback
+local actions = require("diffview.actions")
 
-require'diffview'.setup {
+require("diffview").setup({
   use_icons = false,
   enhanced_diff_hl = true,
   file_panel = {
@@ -10,16 +10,19 @@ require'diffview'.setup {
   file_history_panel = {win_config = {position = 'bottom', height = 10}},
   key_bindings = {
     disable_defaults = true,
-    view = {["q"] = "<CMD>DiffviewClose<CR>", ["<C-n>"] = cb('toggle_files')},
+    view = {
+      ["q"] = "<CMD>DiffviewClose<CR>", 
+      ["<C-n>"] = actions.toggle_files
+    },
     file_panel = {
       ["q"] = "<CMD>DiffviewClose<CR>",
-      ["l"] = cb("select_entry"),
-      ["<C-n>"] = cb('toggle_files')
+      ["l"] = actions.select_entry,
+      ["<C-n>"] = actions.toggle_files
     },
     file_history_panel = {
       ["q"] = "<CMD>DiffviewClose<CR>",
-      ["l"] = cb("select_entry"),
-      ["<C-n>"] = cb('toggle_files')
+      ["l"] = actions.select_entry,
+      ["<C-n>"] = actions.toggle_files
     }
   }
-}
+})

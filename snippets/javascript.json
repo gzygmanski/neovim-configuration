@@ -111,8 +111,13 @@
   },
   "namedFunction": {
     "prefix": "fn",
-    "body": "const ${1:name} = (${2:params}) => {\n\t${3}\n}",
+    "body": "const ${1:name} = (${2:params}) => {\n\t${3}\n};",
     "description": "Creates a named function in ES6 syntax"
+  },
+  "asyncCommonNamedFunction": {
+    "prefix": "acfn",
+    "body": "const ${1:name} = async function (${2:params}) {\n\t${3}\n};",
+    "description": "Creates a named asynchronous function"
   },
   "destructingObject": {
     "prefix": "dob",
