@@ -25,47 +25,60 @@ local list = {
   {key = "?", cb = tree_cb("toggle_help")}
 }
 
-vim.g.nvim_tree_indent_markers = 0
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_root_folder_modifier = ':~'
-vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 1}
-vim.g.nvim_tree_icon_padding = '  '
 vim.g.nvim_tree_width_allow_resize = 1
-vim.g.nvim_tree_highlight_opened_files = 0
-vim.g.nvim_tree_special_files = {}
-
-vim.g.nvim_tree_icons = {
-  default = '  ',
-  symlink = '  ',
-  folder = {
-    default = "  ",
-    open = "  ﱮ",
-    empty = "  ",
-    empty_open = "  ﱮ",
-    symlink = "  ",
-    symlink_open = "  "
-  }
-}
 
 require'nvim-tree'.setup {
-  auto_close = false,
-  auto_open = true,
   hijack_cursor = false,
   update_cwd = true,
-  follow = true,
   update_focused_file = {enable = true, update_cwd = true, ignore_list = {}},
   view = {
     width = 40,
     side = 'left',
-    auto_resize = false,
     mappings = {custom_only = true, list = list}
   },
   diagnostics = {
     enable = false,
-    icons = {error = "", warn = "", hint = "", info = ""}
+    icons = {error = "", warning = "", hint = "", info = ""}
+  },
+  renderer = {
+    root_folder_modifier = ':~',
+    indent_markers = {enable = false},
+    highlight_git = true,
+    highlight_opened_files = 'none',
+    special_files = {},
+    icons = {
+      show = {git = false, folder = true, file = true, folder_arrow = false},
+      padding = '  ',
+      git_placement = 'after',
+      glyphs = {
+        default = '  ',
+        symlink = '  ',
+        folder = {
+          default = "  ",
+          open = "  ﱮ",
+          empty = "  ",
+          empty_open = "  ﱮ",
+          symlink = "  ",
+          symlink_open = "  "
+        },
+        git = {
+          unstaged = "-",
+          staged = "+",
+          unmerged = "!",
+          renamed = "r",
+          untracked = "?",
+          deleted = "x",
+          ignored = ""
+        }
+      }
+    }
   },
   filters = {dotfiles = false},
-  git = {enable = true, ignore = false}
+  git = {enable = true, ignore = true},
+  actions = {
+    open_file = {resize_window = false},
+    remove_file = {close_window = false}
+  }
 }
 
 -- disable word wrap

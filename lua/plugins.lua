@@ -32,11 +32,6 @@ return require('packer').startup(function()
   use {'kyazdani42/nvim-tree.lua'}
   use {'sindrets/diffview.nvim'}
   use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
-  -- use {
-  --   'gzygmanski/neuron.nvim',
-  --   branch = 'match-links',
-  --   requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
-  -- }
 
   -- lsp
   use {'neovim/nvim-lspconfig', requires = {'glepnir/lspsaga.nvim'}}

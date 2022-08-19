@@ -5,7 +5,6 @@ local condition = require('galaxyline.condition')
 local vcs = require('galaxyline.provider_vcs')
 local buffer = require('galaxyline.provider_buffer')
 local fileinfo = require('galaxyline.provider_fileinfo')
-local diagnostic = require('galaxyline.provider_diagnostic')
 local lspclient = require('galaxyline.provider_lsp')
 local icons = require('galaxyline.provider_fileinfo').define_file_icon()
 
@@ -137,16 +136,14 @@ gls.right = {
   {
     DiagnosticError = {
       provider = function()
-        if next(vim.lsp.get_active_clients(0)) == nil then return '' end
+        if next(vim.lsp.get_active_clients()) == nil then return '' end
         local active_clients = vim.lsp.get_active_clients()
         if active_clients then
-          local count = 0
-          for _, client in ipairs(active_clients) do
-            local numOfErrors = table.getn(
-              vim.diagnostic.get(0, {severity = "error"}))
-            count = count + numOfErrors
+          local numOfErrors = table.getn(
+            vim.diagnostic.get(0, {severity = "error"}))
+          if numOfErrors > 0 then
+            return string.format('   E%s  ', numOfErrors)
           end
-          if count > 0 then return string.format('   E%s  ', count) end
         end
       end,
       highlight = {colors.nord6, colors.nord12}
